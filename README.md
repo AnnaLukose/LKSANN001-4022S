@@ -141,7 +141,7 @@ xgboost
 
 ### Pipeline (Steps 5-10, run on every sequence)
 
-| File | Description | Used in |
+| File | Description | Used in (.ipynb) |
 |---|---|---|
 | `preprocess.py` | **Step 5.** Background removal following Song et al. (2025): keeps the red channel, applies the static mask and removes the static background with proper orthogonal decomposition (POD). | `pipeline` |
 | `segment.py` | **Step 6.** The hybrid segmenter (`hybrid_segment`): several candidate outlines per blob, a gradient-boosted quality filter that scores each one, and the best non-overlapping candidates above the cut-off τ = 0.30, with a size correction learned on the training sequences. Scores recall, precision, carbon found and size against the truth (IoU ≥ 0.5). | `pipeline` |
@@ -157,7 +157,7 @@ xgboost
 
 ### Evaluation methods (done once)
 
-| File | Description | Used in |
+| File | Description | Used in (.ipynb) |
 |---|---|---|
 | `scale.py` | Reads the pixel scale from the data (`truth/config.json`) and converts every pixel setting of the comparison scripts so it keeps its physical size. | `piv_compare`, `cls_compare`, `cls_compare2` |
 | `hybrid_segment.py` | The hybrid segmenter used to produce detections for the tracking and classification comparisons. Trains the quality filter the first time and saves it with cached detections, so the other notebooks reuse the same detections. | `piv_compare` (and `cls_compare`, `cls_compare2` through `piv_compare.py`) |
